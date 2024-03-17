@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:minimal_food_app/components/my_botton.dart';
 import 'package:minimal_food_app/components/my_textfield.dart';
+import 'package:minimal_food_app/model/restaunrunt.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
