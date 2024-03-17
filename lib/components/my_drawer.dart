@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:minimal_food_app/components/drawer_tile.dart';
+import 'package:minimal_food_app/pages/setting_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -24,25 +26,42 @@ class MyDrawer extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
             ),
           ),
-          DrawerTile(
-            text: "H O M E ",
-            icon: Icons.home,
-            onTap: () => Navigator.pop(context),
-          ),
-          DrawerTile(
-            text: "S E T T I N G ",
-            icon: Icons.settings,
-            onTap: () {},
-          ),
-          const Spacer(),
-          DrawerTile(
-            text: "L O G O U T ",
-            icon: Icons.logout,
-            onTap: () {},
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0, top: 20),
+              child: Column(
+                children: [
+                  DrawerTile(
+                    text: "H O M E ",
+                    icon: Icons.home,
+                    onTap: () => Navigator.pop(context),
+                  ),
+                  DrawerTile(
+                    text: "S E T T I N G ",
+                    icon: Icons.settings,
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SettingPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  const Spacer(),
+                  DrawerTile(
+                    text: "L O G O U T ",
+                    icon: Icons.logout,
+                    onTap: () {},
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
