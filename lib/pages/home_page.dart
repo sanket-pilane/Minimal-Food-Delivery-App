@@ -7,6 +7,7 @@ import 'package:minimal_food_app/components/my_tapbar.dart';
 import 'package:minimal_food_app/components/silver_appbar.dart';
 import 'package:minimal_food_app/model/food.dart';
 import 'package:minimal_food_app/model/restaunrunt.dart';
+import 'package:minimal_food_app/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,7 +47,16 @@ class _HomePageState extends State<HomePage>
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           final food = categoryList[index];
-          return FoodTile(food: food, onTap: () {});
+          return FoodTile(
+            food: food,
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FoodPage(
+                    food: food,
+                  ),
+                )),
+          );
         },
       );
     }).toList();
