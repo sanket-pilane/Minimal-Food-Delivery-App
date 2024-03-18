@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:minimal_food_app/components/cart_tile.dart';
 import 'package:minimal_food_app/components/my_botton.dart';
 import 'package:minimal_food_app/model/restaunrunt.dart';
+import 'package:minimal_food_app/pages/payment_page.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -74,7 +75,13 @@ class _CartPageState extends State<CartPage> {
               ),
               userCart.isEmpty
                   ? const SizedBox()
-                  : MyButton(onTap: () {}, text: "Go to Checkout"),
+                  : MyButton(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PaymentPage(),
+                          )),
+                      text: "Go to Checkout"),
               const SizedBox(
                 height: 20,
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minimal_food_app/model/cart_items.dart';
+
 import 'package:minimal_food_app/model/food.dart';
 
 class QuantitySelector extends StatelessWidget {
