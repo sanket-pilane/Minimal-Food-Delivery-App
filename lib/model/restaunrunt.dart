@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:minimal_food_app/model/cart_items.dart';
 import 'package:minimal_food_app/model/food.dart';
 import 'package:minimal_food_app/utils/constants.dart';
@@ -371,5 +372,43 @@ class Restaunrant extends ChangeNotifier {
   void clearCart() {
     _cart.clear();
     notifyListeners();
+  }
+
+  String displayReceipt() {
+    final receipt = StringBuffer();
+    receipt.writeln("Here is you receipt");
+    receipt.writeln();
+
+    String formattedDate =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(DateTime.now());
+
+    receipt.writeln(formattedDate);
+    receipt.writeln();
+    receipt.writeln("------------------");
+
+    for (final cartItem in _cart) {
+      receipt.writeln(
+          "${cartItem.quantity} x ${cartItem.food.name} = ${_formatPrice(cartItem.food.price)}");
+      if (cartItem.addons.isNotEmpty) {
+        receipt.writeln("   Add-ons: ${_formatAddons(cartItem.addons)} ");
+      }
+      receipt.writeln();
+    }
+
+    receipt.writeln("------------------");
+    receipt.writeln();
+    receipt.writeln("Total items: ${getTotalCartItems()}");
+    receipt.writeln("Total price: ${getTotalPrice()}");
+    return receipt.toString();
+  }
+
+  String _formatPrice(double price) {
+    return "\$${price.toStringAsFixed(2)}";
+  }
+
+  String _formatAddons(List<Addons> addons) {
+    return addons
+        .map((addon) => "${addon.name} (${_formatPrice(addon.price)})")
+        .join(", ");
   }
 }
