@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:minimal_food_app/components/my_botton.dart';
 import 'package:minimal_food_app/components/my_textfield.dart';
-import 'package:minimal_food_app/pages/home_page.dart';
+
+import 'package:minimal_food_app/services/auth/firebase_services.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -13,15 +14,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  void login() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomePage()));
-  }
-
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+
+    void login() {
+      final authService = FirebaseServices();
+
+      try {
+        authService.signInWithEmailAndPassword(
+            emailController.text, passwordController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Password don't match"),
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(

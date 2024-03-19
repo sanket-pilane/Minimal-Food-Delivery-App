@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minimal_food_app/components/my_botton.dart';
 import 'package:minimal_food_app/components/my_textfield.dart';
+import 'package:minimal_food_app/services/auth/firebase_services.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -75,7 +76,33 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 30),
 
             //login btn
-            MyButton(onTap: () {}, text: "Sign up"),
+            MyButton(
+                onTap: () async {
+                  final _authService = FirebaseServices();
+                  if (passwordController.text ==
+                      confirmPasswordController.text) {
+                    try {
+                      await _authService.signUpWithEmailAndPassword(
+                          emailController.text, passwordController.text);
+                    } catch (e) {
+                      showDialog(
+                        // ignore: use_build_context_synchronously
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(e.toString()),
+                        ),
+                      );
+                    }
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                        title: Text("Password don't match"),
+                      ),
+                    );
+                  }
+                },
+                text: "Sign up"),
             // not a member? Sign up
 
             const SizedBox(

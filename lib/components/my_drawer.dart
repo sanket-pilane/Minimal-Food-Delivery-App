@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:minimal_food_app/components/drawer_tile.dart';
 import 'package:minimal_food_app/pages/setting_page.dart';
+import 'package:minimal_food_app/services/auth/firebase_services.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -53,7 +54,10 @@ class MyDrawer extends StatelessWidget {
                   DrawerTile(
                     text: "L O G O U T ",
                     icon: Icons.logout,
-                    onTap: () {},
+                    onTap: () {
+                      final authService = FirebaseServices();
+                      authService.signOut();
+                    },
                   ),
                   const SizedBox(
                     height: 10,

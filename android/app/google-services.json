@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "654820734155",
+    "project_id": "minimal-food-deliver-app",
+    "storage_bucket": "minimal-food-deliver-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654820734155:android:07ae824e667b3c686d174e",
+        "android_client_info": {
+          "package_name": "com.example.minimal_food_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_UvrOUIIVQ47_XeaS2aY26-ruCu3nwqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
