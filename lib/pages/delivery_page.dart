@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:minimal_food_app/components/my_receipt.dart';
+import 'package:minimal_food_app/model/restaunrunt.dart';
+import 'package:minimal_food_app/services/database/firestore.dart';
+import 'package:provider/provider.dart';
 
-class DeliveryPage extends StatelessWidget {
+class DeliveryPage extends StatefulWidget {
   const DeliveryPage({super.key});
+
+  @override
+  State<DeliveryPage> createState() => _DeliveryPageState();
+}
+
+class _DeliveryPageState extends State<DeliveryPage> {
+  FirestoreServices db = FirestoreServices();
+
+  @override
+  void initState() {
+    super.initState();
+    String receipt = context.read<Restaunrant>().displayReceipt();
+    db.saveOrderToDatabase(receipt);
+  }
 
   @override
   Widget build(BuildContext context) {
