@@ -4,6 +4,7 @@ import 'package:minimal_food_app/components/my_botton.dart';
 import 'package:minimal_food_app/components/my_textfield.dart';
 
 import 'package:minimal_food_app/services/auth/firebase_services.dart';
+import 'package:minimal_food_app/utils/constants.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -25,6 +26,21 @@ class _LoginPageState extends State<LoginPage> {
       try {
         authService.signInWithEmailAndPassword(
             emailController.text, passwordController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            title: Text("Password don't match"),
+          ),
+        );
+      }
+    }
+
+    void signInWithGoogle() {
+      final auth = FirebaseServices();
+
+      try {
+        auth.signInWithGoogle();
       } catch (e) {
         showDialog(
           context: context,
@@ -80,12 +96,56 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 14),
 
             //login btn
             MyButton(onTap: login, text: "Sign in"),
             // not a member? Sign up
 
+            const SizedBox(
+              height: 20,
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: GestureDetector(
+                onTap: signInWithGoogle,
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        googleLogo,
+                        height: 30,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Sign in with google",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 20,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -111,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

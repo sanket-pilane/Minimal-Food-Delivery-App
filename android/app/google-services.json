@@ -12,7 +12,20 @@
           "package_name": "com.example.minimal_food_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "654820734155-p8s1n18cbqsfvcap9d0dpdn61k5tn2di.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.minimal_food_app",
+            "certificate_hash": "874fdf5dcd85fab9d02007b2eaf2539251a980d4"
+          }
+        },
+        {
+          "client_id": "654820734155-43qfsjl6f5op57al143tg1kbip8a248m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC_UvrOUIIVQ47_XeaS2aY26-ruCu3nwqM"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654820734155-43qfsjl6f5op57al143tg1kbip8a248m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "654820734155-a8jok6simattcfd5gb0s0ru5k677qf5f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.minimalFoodApp"
+              }
+            }
+          ]
         }
       }
     }

@@ -32,3 +32,6 @@ const sides2 = "assets/sides/2.jpg";
 const sides3 = "assets/sides/3.jpg";
 const sides4 = "assets/sides/4.jpg";
 const sides5 = "assets/sides/5.jpg";
+
+// Material
+const googleLogo = "assets/material/search.png";
