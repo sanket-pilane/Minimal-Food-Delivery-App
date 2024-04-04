@@ -57,6 +57,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             // logo
 
             Icon(
@@ -106,49 +107,45 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
 
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text("OR")],
+              ),
+            ),
+
+            const SizedBox(
+              height: 20,
+            ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: GestureDetector(
-                onTap: signInWithGoogle,
-                child: Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        googleLogo,
-                        height: 30,
+                  onTap: signInWithGoogle,
+                  child: Container(
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0.6),
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.secondary,
+                        width: 1.4,
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Sign in with google",
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.inversePrimary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 20,
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                    ),
+                    child: Image.asset(
+                      googleLogo,
+                      height: 40,
+                    ),
+                  )),
             ),
             const SizedBox(
               height: 20,
             ),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -171,6 +168,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
           ],
         ),
